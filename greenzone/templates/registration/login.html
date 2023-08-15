@@ -9,7 +9,8 @@
     The username or password is incorrect. Try again.
 </p>
 {% else %}
-<p>Complete the form below to log in:</p>
+<p>Complete the form below to log in. If you don't have an
+account, you can create one <a href="{% url 'register' %}">here</a>.</p>
 {% endif %}
 <div class="login-form">
     <form action="{% url 'login' %}" method="post">
