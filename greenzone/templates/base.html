@@ -9,6 +9,16 @@
 
 <body>
     <div id="header">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+                <a href="#" class="close">x</a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
         <span class="logo">GreenZone</span>
         {% if request.user.is_authenticated %}
         <ul class="menu">
@@ -23,7 +33,6 @@
             <li {% if section == "people" %}class="selected" {% endif %}>
                 <a href="#">People</a>
             </li>
-
         </ul>
         {% endif %}
 
