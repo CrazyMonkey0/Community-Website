@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,6 +129,12 @@ LOGOUT_URL = 'logout'
 # SMTP backend django server
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Obsługa plików multimedialnych
+# Handling multimedia files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+AUTHENTICATION_BACKENDS = [
+'django.contrib.auth.backends.ModelBackend',
+'greenzone.authentication.EmailAuthBackend',
+]
