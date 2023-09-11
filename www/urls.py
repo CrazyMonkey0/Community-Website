@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('greenzone/', include('greenzone.urls')),
+    path('images/', include('images.urls', namespace='images')),
 ]
 
 # Obsługa plików multimedlialnych za pomocą serwera programistycznego

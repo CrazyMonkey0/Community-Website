@@ -12,7 +12,7 @@ class Image(models.Model):
                             blank=True)
     url = models.URLField()
     image = models.ImageField(upload_to='images/%Y/%m/%d')
-    descripton = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)
     user_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
