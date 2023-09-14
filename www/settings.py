@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'images.apps.ImagesConfig',
-    'django_extensions'
+    'django_extensions',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
