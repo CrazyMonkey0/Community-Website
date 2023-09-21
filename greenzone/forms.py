@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+import re
 from .models import Profile
 
 # login form
@@ -26,8 +27,13 @@ class UserRegistrationForm(forms.ModelForm):
 
     # checking if there is an account with the same email address
     def clean_email(self):
-        if User.objects.filter(email='email')[:1] != ['']:
-            raise forms.ValidationError('Email are not identical.')
+        cd = self.cleaned_data
+        if User.objects.filter(email=cd['email']):
+            raise forms.ValidationError('The email already exists.')
+        elif  re.match(\
+        r"^([A-Za-z0-9]+|[A-Za-z0-9][A-Za-z0-9\.]+[A-Za-z0-9])@([A-Za-z0-9]+|[A-Za-z0-9][A-Za-z0-9-\.]+[A-Za-z0-9])\.[A-Za-z]+$" \
+            , cd['email']):
+            raise forms.ValidationError('The email is incorrect.')
 
 
 class UserEditForm(forms.ModelForm):

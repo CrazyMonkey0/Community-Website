@@ -39,9 +39,10 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(
                 user_form.cleaned_data['password'])
-            # create user profile
-            profile = Profile.objects.create(user=new_user)
             new_user.save()
+            # create user profile
+            Profile.objects.create(user=new_user)
+            
             return render(request,
                           'greenzone/register_done.html',
                           {'new_user': new_user})
