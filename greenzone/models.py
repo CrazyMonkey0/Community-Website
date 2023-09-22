@@ -1,7 +1,23 @@
 from django.db import models
-from django.db import models
+from django.contrib.auth import get_user_model
 from django.conf import settings
 
+
+class Contact(models.Model):
+    user_form = models.ForeignKey('auth.User',
+                                  related_name='rel_form_set',
+                                  on_delete=models.CASCADE)
+    user_to = models.ForeignKey('auth.User',
+                                  related_name='rel_to_set',
+                                  on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True,
+                                   db_index=True)
+    
+    class Meta:
+        ordering = ('-created',)
+    
+    def __str__(self):
+        return '{} follows {}'.format(self.user_form, self.user_to)
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
@@ -12,3 +28,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return 'User profile {}.'.format(self.user.username)
+
+# Add following field to User dynamically
+user_model = get_user_model()
+user_model.add_to_class('following',
+                        models.ManyToManyField('self',
+                                                through=Contact,
+                                                related_name='followers',
+                                                symmetrical=False))
+    
