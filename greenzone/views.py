@@ -5,6 +5,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from common.decorators import ajax_required
+from actions.utils import create_action 
+from actions.models import Action
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile, Contact
 
@@ -19,6 +21,7 @@ def register(request):
             new_user.save()
             # create user profile
             Profile.objects.create(user=new_user)
+            create_action(new_user, 'Created account')
             
             return render(request,
                           'greenzone/register_done.html',
@@ -34,9 +37,17 @@ def register(request):
 # View to display main panel to user
 @login_required
 def dashboard(request):
+    actions = Action.objects.exclude(user=request.user)
+    following_ids = request.user.following.values_list('id', flat=True)
+    if following_ids:
+        # If the user is watching others, he will only receive information about actions taken by them.
+        actions = actions.filter(user_id__in=following_ids)
+    actions = actions.select_related('user', 'user__profile')\
+        .prefetch_related('target')[:10]
     return render(request,
                   'greenzone/dashboard.html',
-                  {'section': 'dashboard'})
+                  {'section': 'dashboard',
+                   'actions': actions})
 
 
 @login_required
@@ -97,6 +108,7 @@ def user_follow(request):
             if action == 'follow':
                 Contact.objects.get_or_create(user_form=request.user,
                                               user_to=user)
+                create_action(request.user, 'follow', user)
             else:
                 Contact.objects.filter(user_form=request.user,
                                        user_to=user).delete()
