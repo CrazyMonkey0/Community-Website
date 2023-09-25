@@ -4,14 +4,17 @@ from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.http import require_POST
+from django.conf import settings
 import redis
 from common.decorators import ajax_required, is_ajax
 from actions.utils import create_action
 from .forms import ImageCreateForm
 from .models import Image
 
-
-r = redis.Redis(host='localhost', port=6379, db=0)
+# connect to redis
+r = redis.Redis(host=settings.REDIS_HOST,
+                port=settings.REDIS_PORT,
+                db=settings.REDIS_DB)
 
 
 @login_required
@@ -40,8 +43,7 @@ def image_detail(request, id, slug):
     # Increment by 1 the total number of displays of a given image.
     total_views = r.incr('image:{}:views'.format(image.id))
     # Increment by 1 the ranking of a given image.
-    r.zincrby('image_ranking', image.id, 1)
-
+    r.zincrby('image_ranking', 1, image.id)
     return render(request,
                   'images/image/detail.html',
                   {'section': 'images',
@@ -55,20 +57,20 @@ def image_detail(request, id, slug):
 def image_like(request):
     image_id = request.POST.get('id')
     action = request.POST.get('action')
-    
     if image_id and action:
         try:
             image = Image.objects.get(id=image_id)
-            
+
             if action == 'like':
-                image.user_like.add(request.user)
-                create_action(request.user, 'Liked', image)
+                image.users_like.add(request.user)
+                create_action(request.user, 'likes', image)
             else:
-                image.user_like.remove(request.user)
+                image.users_like.remove(request.user)
             return JsonResponse({'status':'ok'})
         except:
             pass
-    return JsonResponse({'status':'ok'})
+    return JsonResponse({'status':'error'})
+
 
 
 @login_required

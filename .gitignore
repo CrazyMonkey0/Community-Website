@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 cert.crt 
 cert.key
+media/
