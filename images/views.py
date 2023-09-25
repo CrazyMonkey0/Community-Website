@@ -10,7 +10,9 @@ from actions.utils import create_action
 from .forms import ImageCreateForm
 from .models import Image
 
+
 r = redis.Redis(host='localhost', port=6379, db=0)
+
 
 @login_required
 def image_create(request):
@@ -35,13 +37,17 @@ def image_create(request):
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
+    # Increment by 1 the total number of displays of a given image.
     total_views = r.incr('image:{}:views'.format(image.id))
+    # Increment by 1 the ranking of a given image.
+    r.zincrby('image_ranking', image.id, 1)
 
     return render(request,
                   'images/image/detail.html',
                   {'section': 'images',
                   'image': image,
                   'total_views': total_views,})
+
 
 @ajax_required
 @login_required
@@ -64,6 +70,7 @@ def image_like(request):
             pass
     return JsonResponse({'status':'ok'})
 
+
 @login_required
 def image_list(request):
     
@@ -85,3 +92,18 @@ def image_list(request):
     return render(request,
             'images/image/list.html',
             {'section': 'images', 'images': images})
+
+
+@login_required
+def image_ranking(request):
+    # Download image ranking dictionary.
+    image_ranking = r.zrange('image_ranking', 0, -1, desc=True)[:10]
+    image_ranking_ids = [int(id) for id in image_ranking]
+    # Downloading the most frequently displayed images.
+    most_viewed = list(Image.objects.filter(
+                            id__in=image_ranking_ids))
+    most_viewed.sort(key=lambda x: image_ranking_ids.index(x.id))
+    return render(request,
+                  'images/image/ranking.html',
+                  {'section': 'images',
+                  'most_viewed': most_viewed})
