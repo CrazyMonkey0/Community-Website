@@ -1049,24 +1049,6 @@
     },
     {
         "model": "auth.permission",
-        "pk": 67,
-        "fields": {
-            "name": "Can delete contact",
-            "content_type": 17,
-            "codename": "delete_contact"
-        }
-    },
-    {
-        "model": "auth.permission",
-        "pk": 68,
-        "fields": {
-            "name": "Can view contact",
-            "content_type": 17,
-            "codename": "view_contact"
-        }
-    },
-    {
-        "model": "auth.permission",
         "pk": 69,
         "fields": {
             "name": "Can add action",
@@ -1106,7 +1088,7 @@
         "pk": 1,
         "fields": {
             "password": "pbkdf2_sha256$600000$4WHlK8LHypRQTR3QuiyXlV$QTbwH9utEh/Vx852/XTYjJFNLy86MLPkbQX6frdQiA0=",
-            "last_login": "2023-09-23T13:07:05.115Z",
+            "last_login": "2023-09-25T11:05:18.797Z",
             "is_superuser": true,
             "username": "hubi",
             "first_name": "k",
@@ -1171,6 +1153,62 @@
             "date_joined": "2023-09-20T20:06:44.315Z",
             "groups": [],
             "user_permissions": []
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "greenzone",
+            "model": "profile"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "greenzone",
+            "model": "contact"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
         }
     },
     {
@@ -1278,6 +1316,14 @@
         }
     },
     {
+        "model": "sessions.session",
+        "pk": "qxckvxal4vtq3gujhyj9roxz2cczc6qe",
+        "fields": {
+            "session_data": ".eJxVjDkOwjAUBe_iGlnfG4kp6XOG6C82DiBHipMKcXeIlALaNzPvpUbc1jJuLS3jJOqijDr9boT8SHUHcsd6mzXPdV0m0ruiD9r0MEt6Xg_376BgK98arM1BmL0jL9ShS9b2BokDd4YzdRI82OjP6CBnoSgEMYFwAHY9gHp_APvQOG0:1qkjOw:Jg6TIwPAojQE8xEV_ZQx-u8KUPiNjhbtmAadVxJj9TM",
+            "expire_date": "2023-10-09T11:05:18.877Z"
+        }
+    },
+    {
         "model": "images.image",
         "pk": 3,
         "fields": {
@@ -1288,7 +1334,10 @@
             "image": "images/2023/09/11/Untitled_eijJqVo.jpeg",
             "description": "",
             "created": "2023-09-11",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1302,7 +1351,10 @@
             "image": "images/2023/09/14/5-000-darmowych-obrazow-z-kategorii-komputerowe-i-komputer-pixabay.jpg",
             "description": "",
             "created": "2023-09-14",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1316,6 +1368,7 @@
             "image": "images/2023/09/14/programming-wallpapers.jpg",
             "description": "",
             "created": "2023-09-14",
+            "total_likes": 0,
             "users_like": []
         }
     },
@@ -1330,7 +1383,10 @@
             "image": "images/2023/09/14/dog.jpg",
             "description": "",
             "created": "2023-09-14",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1344,6 +1400,7 @@
             "image": "images/2023/09/14/dog-wikipedia-wolna-encyklopedia.jpg",
             "description": "",
             "created": "2023-09-14",
+            "total_likes": 0,
             "users_like": [
                 1
             ]
@@ -1360,7 +1417,10 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_Y6rCeTI.jpg",
             "description": "",
             "created": "2023-09-19",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1374,7 +1434,9 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_KcC2BRN.jpg",
             "description": "",
             "created": "2023-09-19",
+            "total_likes": 0,
             "users_like": [
+                1,
                 2
             ]
         }
@@ -1390,7 +1452,10 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_jaR4y88.jpg",
             "description": "",
             "created": "2023-09-19",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1404,7 +1469,10 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_c1Gnn5z.jpg",
             "description": "",
             "created": "2023-09-19",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1418,6 +1486,7 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_12hj3XQ.jpg",
             "description": "",
             "created": "2023-09-19",
+            "total_likes": 0,
             "users_like": [
                 1
             ]
@@ -1434,7 +1503,10 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_ZYnzIyO.jpg",
             "description": "",
             "created": "2023-09-19",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1448,6 +1520,7 @@
             "image": "images/2023/09/19/obrazy-jpg-zdjecia-wektory-i-wideo-bez-tantiem-211865-adobe-stockback-_SjXxXXL.jpg",
             "description": "",
             "created": "2023-09-19",
+            "total_likes": 0,
             "users_like": []
         }
     },
@@ -1462,7 +1535,10 @@
             "image": "images/2023/09/23/stockowe-obrazy-zdjecia-grafiki-wektorowe-filmy-oraz-muzyka-shutterstock.jpg",
             "description": "",
             "created": "2023-09-23",
-            "users_like": []
+            "total_likes": 0,
+            "users_like": [
+                1
+            ]
         }
     },
     {
@@ -1476,6 +1552,7 @@
             "image": "images/2023/09/23/stockowe-obrazy-zdjecia-grafiki-wektorowe-filmy-oraz-muzyka-shuttersto_ZGMPb1O.jpg",
             "description": "",
             "created": "2023-09-23",
+            "total_likes": 0,
             "users_like": []
         }
     },
@@ -1568,6 +1645,149 @@
         }
     },
     {
+        "model": "actions.action",
+        "pk": 9,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 6,
+            "created": "2023-09-25T12:04:31.515Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 10,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 6,
+            "created": "2023-09-25T12:05:59.523Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 11,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 3,
+            "created": "2023-09-25T12:09:48.826Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 12,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 3,
+            "created": "2023-09-25T12:12:55.105Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 13,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 10,
+            "created": "2023-09-25T12:13:21.763Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 14,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 9,
+            "created": "2023-09-25T12:14:45.864Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 15,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 3,
+            "created": "2023-09-25T12:26:42.077Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 16,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 4,
+            "created": "2023-09-25T12:29:37.364Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 17,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 8,
+            "created": "2023-09-25T12:29:46.281Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 18,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 15,
+            "created": "2023-09-25T12:31:33.091Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 19,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 13,
+            "created": "2023-09-25T12:32:07.940Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 20,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 11,
+            "created": "2023-09-25T12:32:52.441Z"
+        }
+    },
+    {
+        "model": "actions.action",
+        "pk": 21,
+        "fields": {
+            "user": 1,
+            "verb": "likes",
+            "target_ct": 13,
+            "target_id": 4,
+            "created": "2023-09-25T12:55:21.438Z"
+        }
+    },
+    {
         "model": "easy_thumbnails.source",
         "pk": 1,
         "fields": {
@@ -1609,7 +1829,7 @@
         "fields": {
             "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
             "name": "images/2023/09/14/dog.jpg",
-            "modified": "2023-09-19T16:13:06.903Z"
+            "modified": "2023-09-25T11:05:28.843Z"
         }
     },
     {
@@ -1717,7 +1937,7 @@
         "fields": {
             "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
             "name": "images/2023/09/23/stockowe-obrazy-zdjecia-grafiki-wektorowe-filmy-oraz-muzyka-shutterstock.jpg",
-            "modified": "2023-09-23T13:05:35.245Z"
+            "modified": "2023-09-25T12:31:31.084Z"
         }
     },
     {
@@ -2058,6 +2278,26 @@
             "name": "users/2023/09/20/Untitled.jpeg.80x80_q85_crop-100%.jpg",
             "modified": "2023-09-23T13:07:34.774Z",
             "source": 13
+        }
+    },
+    {
+        "model": "easy_thumbnails.thumbnail",
+        "pk": 35,
+        "fields": {
+            "storage_hash": "d26becbf46ac48eda79c7a39a13a02dd",
+            "name": "images/2023/09/14/dog.jpg.300x0_q100.jpg",
+            "modified": "2023-09-25T11:05:28.904Z",
+            "source": 5
+        }
+    },
+    {
+        "model": "easy_thumbnails.thumbnail",
+        "pk": 36,
+        "fields": {
+            "storage_hash": "d26becbf46ac48eda79c7a39a13a02dd",
+            "name": "images/2023/09/23/stockowe-obrazy-zdjecia-grafiki-wektorowe-filmy-oraz-muzyka-shutterstock.jpg.300x0_q100.jpg",
+            "modified": "2023-09-25T12:31:31.178Z",
+            "source": 17
         }
     }
 ]
