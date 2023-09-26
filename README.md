@@ -1,4 +1,11 @@
+# <center>application from the book **"Django 3 By Example"**</center>
+# <center>Author: **Antonio Melé**</center>
+<br>
+<br>
+
+----------
 # <center>**Community-Website Documentation**</center>
+
 
 1. **Introduction**
     - Description of the application 
