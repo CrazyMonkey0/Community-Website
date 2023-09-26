@@ -31,3 +31,17 @@ services:
     entrypoint: /entrypoint.sh
     depends_on:
       - db
+  web1-1:
+    build: .
+    command: python manage.py runserver_plus --cert-file cert.crt 0.0.0.0:7000
+    volumes:
+      - .:/code
+    ports:
+      - "7000:7000"
+    environment:
+      - POSTGRES_NAME=website
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    entrypoint: /entrypoint.sh
+    depends_on:
+      - db
